@@ -2,6 +2,9 @@
   <artifact type="jar" name="eMotorwerksCheckout:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/eMotorwerksCheckout_jar</output-path>
     <root id="archive" name="eMotorwerksCheckout.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/test/java/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="eMotorwerksCheckout" />
       <element id="module-test-output" name="eMotorwerksCheckout" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar" path-in-jar="/" />

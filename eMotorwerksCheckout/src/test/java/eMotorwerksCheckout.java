@@ -1,44 +1,45 @@
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.Assert.assertEquals;
 
 public class eMotorwerksCheckout {
+    public static WebDriver driver;
 
-    public static void main(String[] args) {
-
+    public static void main( String[] args ) {
         System.setProperty( "webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe" );
 
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
-        driver.get( "http://energy.devel/store/residential/juicebox-pro-40-smart-40-amp-evse-with-24-foot-cable" );
+        driver.get( "http://energy.devel/" );
 
-        ProductPage productPage = new ProductPage();
-        productPage.closeCookieBaner( driver );
-        productPage.addProductToCart( driver );
-        productPage.waitForSmallCart( driver );
-        productPage.goToCart( driver );
+        driver.manage().window().setSize( new Dimension( 1280, 800 ) );
+
+        MainPage mainPage = new MainPage();
+        mainPage.closeCookieBaner();
+        mainPage.navigateToCategoryPage();
+
+        ResidentialPage residentialPage = new ResidentialPage();
+        residentialPage.addProductToCart();
+        residentialPage.waitingForMiniCart();
+        residentialPage.goToMiniCart();
 
         CartPage cartPage = new CartPage();
-        cartPage.waitForCheckoutButton( driver );
-        cartPage.goToCheckout( driver );
+        cartPage.waitForCheckoutButton();
+        cartPage.goToCheckout();
 
         CheckoutPage checkoutPage = new CheckoutPage();
-        checkoutPage.waitForStepOne( driver );
-        checkoutPage.fillStepOneFields( driver );
-        checkoutPage.waitForStepTwo( driver );
-        checkoutPage.fillStepTwoFields( driver );
-        checkoutPage.waitForStepThree( driver );
-        checkoutPage.waitForStripe( driver );
-        checkoutPage.fillStripeFields( driver );
+        checkoutPage.waitForStepOne();
+        checkoutPage.fillStepOneFields();
+        checkoutPage.waitForDisplayStepOneData();
+        checkoutPage.waitForStepTwo();
+        checkoutPage.checkCountryAndState();
+        checkoutPage.fillStepTwoFields();
+        checkoutPage.waitForDisplayStepTwoData();
+        checkoutPage.waitForStepThree();
+        checkoutPage.validateStripeIsChecked();
+        checkoutPage.validateBillingSameAsShippingIsChecked();
+        checkoutPage.fillStripeFields();
 
-        //ormPage formPage = new FormPage();
-        //formPage.submitForm(driver);
-
-        //ConfirmationPage confirmationPage = new ConfirmationPage();
-        //confirmationPage.waitForAlertBanner(driver);
-
-        //assertEquals("The form was successfully submitted!", confirmationPage.getAlertBannerText(driver));
 
         //driver.quit();
     }

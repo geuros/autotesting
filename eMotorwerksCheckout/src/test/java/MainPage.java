@@ -9,14 +9,15 @@ public class MainPage {
     static String cookieBoxCloseButtonSelector = "#pwebbox204_container .pwebbox_bottombar_toggler";
     static String storeMenuItemSelector = ".b-header__menu .item-1038";
     static String HomeEvChargingStationsMenuItemSelector = ".b-header__menu .item-1133";
+    static WebDriver driver = eMotorwerksCheckout.driver;
 
-    public static void closeCookieBaner( WebDriver driver ) {
+    public static void closeCookieBaner() {
         WebDriverWait wait = new WebDriverWait( driver, 10 );
         wait.until( ( ExpectedConditions.visibilityOfElementLocated( By.cssSelector( cookieBoxCloseButtonSelector ) ) ) );
         driver.findElement( By.cssSelector( cookieBoxCloseButtonSelector ) ).click();
     }
 
-    public static void navigateToCategoryPage( WebDriver driver ) {
+    public static void navigateToCategoryPage() {
         WebElement storeMenuItem = driver.findElement( By.cssSelector( storeMenuItemSelector ) );
         Actions action = new Actions( driver );
         action.moveToElement( storeMenuItem ).build().perform();
