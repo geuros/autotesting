@@ -10,17 +10,21 @@ public class ResidentialPage {
 
     public static void addProductToCart() {
         driver.findElement( By.cssSelector( addToCartButtonSelector ) ).click();
+        System.out.println( "Product added" );
     }
 
     public static void waitingForMiniCart() {
         WebDriverWait wait = new WebDriverWait( driver, 10 );
         wait.until( ( ExpectedConditions.visibilityOfElementLocated( By.cssSelector( cartButtonSelector ) ) ) );
+        System.out.println( "Mini cart is visible" );
     }
 
     public static void goToMiniCart() {
         driver.findElement( By.cssSelector( cartButtonSelector ) ).click();
+        System.out.println( "Button view cart is visible" );
 
         WebDriverWait wait_5 = new WebDriverWait( driver, 5 );
         wait_5.until( ( ExpectedConditions.urlContains( "/cart" ) ) );
+        System.out.println( "We on page View Cart" );
     }
 }

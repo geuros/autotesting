@@ -11,10 +11,11 @@ public class MainPage {
     static String HomeEvChargingStationsMenuItemSelector = ".b-header__menu .item-1133";
     static WebDriver driver = eMotorwerksCheckout.driver;
 
-    public static void closeCookieBaner() {
+    public static void closeCookieBanner() {
         WebDriverWait wait = new WebDriverWait( driver, 10 );
         wait.until( ( ExpectedConditions.visibilityOfElementLocated( By.cssSelector( cookieBoxCloseButtonSelector ) ) ) );
         driver.findElement( By.cssSelector( cookieBoxCloseButtonSelector ) ).click();
+        System.out.println( "Cookie banner closed" );
     }
 
     public static void navigateToCategoryPage() {
@@ -29,5 +30,6 @@ public class MainPage {
 
         WebDriverWait wait_5 = new WebDriverWait( driver, 5 );
         wait_5.until( ( ExpectedConditions.urlContains( "/store/residential" ) ) );
+        System.out.println( "We on page: Home EV Charging Stations" );
     }
 }
