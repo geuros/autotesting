@@ -30,9 +30,9 @@ public class eMotorwerksCheckout {
     public static void main( String[] args ) {
         Scanner scanner = new Scanner( System.in );
         System.out.print( "Enter chromedriver.exe path (leave empty if it in current directory): " );
-        String chromedriverPath = scanner.next();
+        String chromedriverPath = scanner.nextLine().trim();
         System.out.print( "Enter site url (with http(s)://): " );
-        String siteUrl = scanner.next();
+        String siteUrl = scanner.next().trim();
 
         String chromedriverFilePath = chromedriverPath + "chromedriver.exe";
 
